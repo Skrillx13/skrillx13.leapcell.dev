@@ -1,7 +1,7 @@
 # -- Python Packages --
 __pycache__
 .envrc
-venv/
+venv
 
 # -- Site Packages --
 content/.obsidian/

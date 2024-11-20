@@ -1,0 +1,14 @@
+/* Additional Stylesheet */
+/* This Stylesheet contains any additional styles the website may use */
+
+.reveal pre code, .hljs {
+    background-color: #fffff8 !important; 
+    color: #DCDCDC; 
+    padding: 5px;
+    overflow: auto;
+    max-height: 400px;
+    word-wrap: normal;
+}
+.reveal pre, .hljs {
+    box-shadow: none !important;
+}

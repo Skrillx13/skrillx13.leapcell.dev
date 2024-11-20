@@ -1,0 +1,25 @@
+<!-- Base Template -->
+<!-- This is the base template where every other template is *probably* pulling from. -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/github-dark-dimmed.min.css">
+    <link rel="stylesheet" href="/assets/tufte/styles.css">
+    <link rel="stylesheet" href="/assets/tufte/tuff.css">
+    <title>{{title}} - Skrillx's Other Site</title>
+</head>
+
+<body>
+    {% block nav %}{% endblock %}
+    {% block scripts %}{% endblock %}
+    <script>hljs.highlightAll();</script>
+</body>
+
+</html>

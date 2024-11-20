@@ -1,0 +1,90 @@
+<!-- Index Template -->
+<!-- This template is responsible for controlling the index, as well as setting up site-wide navigation. -->
+{% extends "base.html" %}
+
+{% block nav%}
+<article>
+    <p class="title-breadcrumbs">
+        <a href="/">skrillx13.leapcell.dev</a>
+        {% for crumb in breadcrumbs %}
+        <span class="separator">/</span>
+        <a href="{{ crumb.url }}">{{ crumb.title or crumb.name }}</a>
+        {% endfor %}
+    </p>
+
+    {% if files %} {% set image_files = files | selectattr("is_image",
+    "equalto", true) | list %} {% set non_image_files = files |
+    selectattr("is_image", "equalto", false) | list %} {% if
+    image_files %}
+    <div class="image-grid">
+        {% for file in image_files %}
+        <div class="image-item">
+            <a
+                href="{{ file.url }}"
+                data-fancybox="gallery"
+                data-caption="{{ file.title or file.name }}"
+            >
+                <img
+                    src="{{ file.url }}"
+                    alt="{{ file.title or file.name }}"
+                    loading="lazy"
+                />
+            </a>
+
+            {% if file.exif_data %}
+            <div class="exif-data">
+                {% for key, value in file.exif_data.items() %} {% if
+                value and value != "Unknown" %}
+                <p>{{ key }}: {{ value }}</p>
+                {% endif %} {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %} {% if non_image_files %}
+    <ul>
+        {% for file in non_image_files %}
+        <li>
+            {% if file.is_dir %}<strong
+                >{% endif %}
+                <a href="{{ file.url }}"
+                    >{{ file.title or file.name }}</a
+                >
+                {% if file.is_dir %}</strong
+            >{% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %} {% endif %} {% if content %}
+    
+    <section>{{ content | safe }}</section>
+    {% endif %}
+</article>
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+    var _gauges = _gauges || [];
+    (function () {
+        var t = document.createElement("script");
+        t.type = "text/javascript";
+        t.async = true;
+        t.id = "gauges-tracker";
+        t.setAttribute("data-site-id", "65529a9abd1a3b3101979d52");
+        t.setAttribute(
+            "data-track-path",
+            "https://track.gaug.es/track.gif",
+        );
+        t.src = "https://d2fuc4clr7gvcn.cloudfront.net/track.js";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(t, s);
+    })();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+<script>
+    Fancybox.bind("[data-fancybox]", {
+        // Your custom options
+    });
+</script>
+{% endblock %}

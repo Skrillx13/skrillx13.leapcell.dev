@@ -1,0 +1,11 @@
+# -- Python Packages --
+__pycache__
+.envrc
+venv/
+
+# -- Site Packages --
+content/.obsidian/
+
+# -- Misc --
+.vscode
+**/.DS_Store
